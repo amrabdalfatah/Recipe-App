@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:recipe_app/models/recipe.dart';
+import 'recipe_detail.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -46,7 +47,13 @@ class HomePage extends StatelessWidget {
               padding: EdgeInsets.all(8.0),
               child: GestureDetector(
                 onTap: () {
-                  print(Recipe.samples[index].title);
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (context) {
+                        return RecipeDetail(Recipe.samples[index]);
+                      },
+                    ),
+                  );
                 },
                 child: buildRecipe(Recipe.samples[index]),
               ),
